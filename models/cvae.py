@@ -102,11 +102,10 @@ class ConditionalVAE(BaseVAE):
 
     def decode(self, z: Tensor) -> Tensor:
         result = self.decoder_input(z)
-        result = result.view(-1, 512, 2, 2)
+        #result = result.view(-1, 512, 2, 2)
+        result = result.view(-1, 512, 1, 1)
         result = self.decoder(result)
-        print(result.shape)
         result = self.final_layer(result)
-        print(result.shape)
         return result
 
     def reparameterize(self, mu: Tensor, logvar: Tensor) -> Tensor:
