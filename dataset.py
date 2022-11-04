@@ -1,6 +1,7 @@
 import os
 import torch
 from torch import Tensor
+import torch.nn.functional as F
 from pathlib import Path
 from typing import List, Optional, Sequence, Union, Any, Callable
 from torchvision.datasets.folder import default_loader
@@ -131,11 +132,15 @@ class VAEDataset(LightningDataModule):
         
         val_transforms = transforms.Compose([transforms.RandomHorizontalFlip(),
                                             transforms.ToTensor(),])
+
+        target_transforms = transforms.Compose([lambda x: torch.LongTensor([x]),
+                                                lambda x: F.one_hot(x, 10)])
         
         self.train_dataset = CIFAR10(
             self.data_dir,
             train=True,
             transform=train_transforms,
+            target_transform=target_transforms,
             download=True,
         )
         
@@ -144,6 +149,7 @@ class VAEDataset(LightningDataModule):
             self.data_dir,
             train=False,
             transform=val_transforms,
+            target_transform=target_transforms,
             download=True,
         )
 #       ===============================================================
