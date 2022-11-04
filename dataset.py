@@ -133,7 +133,7 @@ class VAEDataset(LightningDataModule):
         val_transforms = transforms.Compose([transforms.RandomHorizontalFlip(),
                                             transforms.ToTensor(),])
 
-        target_transforms = transforms.Compose([lambda x: torch.LongTensor(x),
+        target_transforms = transforms.Compose([lambda x: torch.LongTensor([x]),
                                                 lambda x: F.one_hot(x, 10)])
         
         self.train_dataset = CIFAR10(
