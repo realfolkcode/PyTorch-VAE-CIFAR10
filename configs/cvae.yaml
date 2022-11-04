@@ -1,14 +1,14 @@
 model_params:
   name: 'ConditionalVAE'
   in_channels: 3
-  num_classes: 40
+  num_classes: 10
   latent_dim: 128
 
 data_params:
   data_path: "Data/"
-  train_batch_size: 64
+  train_batch_size: 128
   val_batch_size:  64
-  patch_size: 64
+  patch_size: 32
   num_workers: 4
 
 
@@ -21,7 +21,7 @@ exp_params:
 
 trainer_params:
   gpus: [1]
-  max_epochs: 10
+  max_epochs: 110
 
 logging_params:
   save_dir: "logs/"
