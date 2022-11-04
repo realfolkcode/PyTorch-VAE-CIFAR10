@@ -129,7 +129,8 @@ class ConditionalVAE(BaseVAE):
         mu, log_var = self.encode(x)
 
         z = self.reparameterize(mu, log_var)
-        print(y)
+        print(z.shape)
+        print(y.shape)
 
         z = torch.cat([z, y], dim = 1)
         return  [self.decode(z), input, mu, log_var]
