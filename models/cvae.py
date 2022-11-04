@@ -163,6 +163,7 @@ class ConditionalVAE(BaseVAE):
         :return: (Tensor)
         """
         y = kwargs['labels'].float()
+        y = y.squeeze()
         z = torch.randn(num_samples,
                         self.latent_dim)
 
