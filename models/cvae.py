@@ -87,11 +87,11 @@ class ConditionalVAE(BaseVAE):
         :param input: (Tensor) Input tensor to encoder [N x C x H x W]
         :return: (Tensor) List of latent codes
         """
-        print('input shape:', input.shape)
+        #print('input shape:', input.shape)
         result = self.encoder(input)
-        print('encoded shape:', result.shape)
+        #print('encoded shape:', result.shape)
         result = torch.flatten(result, start_dim=1)
-        print('result shape', result.shape)
+        #print('result shape', result.shape)
 
         # Split the result into mu and var components
         # of the latent Gaussian distribution
