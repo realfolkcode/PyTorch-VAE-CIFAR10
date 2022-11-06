@@ -2,7 +2,7 @@ model_params:
   name: 'ConditionalVAE'
   in_channels: 3
   num_classes: 10
-  latent_dim: 256
+  latent_dim: 128
 
 data_params:
   data_path: "Data/"
@@ -16,7 +16,7 @@ exp_params:
   LR: 0.005
   weight_decay: 0.0
   scheduler_gamma: 0.95
-  kld_weight: 0.00025
+  kld_weight: 0.00100
   manual_seed: 1265
 
 trainer_params:
